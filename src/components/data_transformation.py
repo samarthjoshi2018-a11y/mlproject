@@ -7,7 +7,7 @@ from sklearn.compose import ColumnTransformer
 import os
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from src.util import save_obj
+from src.util import save_object
 from sklearn.preprocessing import OneHotEncoder,StandardScaler
 
 from src.exception import CustomException
@@ -91,12 +91,12 @@ class Datatransformation:
             ]
             logging.info(f"saved preprocessing objects")
 
-            save_obj(
+            save_object(
                 file_path=self.Datatrans_config.preprocessor_obj_file_path, 
                 obj=preprocessing_obj
             )
             return(
-                train_arr,test_arr,self.Datatrans_config.preprocessor_obj_file_path
+                train_arr,test_arr
             )
         except Exception as e:
             raise CustomException(e,sys)
